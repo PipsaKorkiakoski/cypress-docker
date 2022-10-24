@@ -18,6 +18,11 @@ jobs:
           node-version: 12
 
       - run: npm --version
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - run: npm --version
 
   # ui-chrome-tests:
 

@@ -8,14 +8,22 @@ on:
 
 jobs:
   example_matrix:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [10, 12, 14]
+        os: [windows-latest, ubuntu-latest]
+        node: [12, 14, 16]
+        include:
+          - os: windows-latest
+            node: 16
+            npm: 6
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
+          node-version: ${{ matrix.node }}
+      - if: ${{ matrix.npm }}
+        run: npm install -g npm@${{ matrix.npm }}
+      - run: npm --version
 
   # ui-chrome-tests:
 

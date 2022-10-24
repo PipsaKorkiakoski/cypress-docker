@@ -7,6 +7,22 @@ on:
     branches: [ "main" ]
 
 jobs:
+  install:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.13.0-chrome95-ff94
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+      - name: Cypress install
+        uses: cypress-io/github-action@v4.2.0
+        with:
+            # Disable running of tests within install job
+            runTests: false
+
   example_matrix:
     strategy:
       matrix:

@@ -8,26 +8,13 @@ on:
 
 jobs:
 
-  install:
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Cypress install
-        uses: cypress-io/github-action@v4.2.0 # use the explicit version number
-        with:
-          # Disable running of tests within install job
-          runTests: false
 
   ui-chrome-tests:
 
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node16.13.0-chrome95-ff94
-    needs: install
+
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes

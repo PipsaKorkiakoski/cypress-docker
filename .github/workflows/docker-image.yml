@@ -10,18 +10,15 @@ jobs:
   example_matrix:
     strategy:
       matrix:
-        container: [1, 2, 3]
-    runs-on: ubuntu-latest
+        os: [windows-latest, ubuntu-latest]
+        node: [12, 14, 16]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 12
-
-      - run: npm --version
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
+          node-version: ${{ matrix.node }}
+      - if: ${{ matrix.npm }}
+        run: npm install -g npm@${{ matrix.npm }}
       - run: npm --version
 
   # ui-chrome-tests:

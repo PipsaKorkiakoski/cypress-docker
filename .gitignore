@@ -1,0 +1,12 @@
+
+/cypress/results/
+/cypress/videos/
+/cypress/screenshots/
+
+node_modules
+
+.DS_Store
+
+archived-tests
+
+cypress/reports

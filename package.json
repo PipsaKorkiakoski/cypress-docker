@@ -1,0 +1,43 @@
+{
+  "devDependencies": {
+    "@badeball/cypress-parallel": "^1.4.0",
+    "amazon-cognito-identity-js": "^5.2.10",
+    "aws-sdk": "^2.1221.0",
+    "browserstack-cypress-cli": "^1.19.0",
+    "cypress": "^10.8.0",
+    "cypress-mochawesome-reporter": "^3.0.1",
+    "cypress-parallel": "^0.9.1",
+    "faker": "5.5.3",
+    "mochawesome-merge": "^4.2.1",
+    "request": "^2.88.2",
+    "typescript": "^4.8.3"
+  },
+  "name": "cypress-demo",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean:reports": "mkdir -p cypress/reports && rm -R -f cypress/reports/* && mkdir cypress/reports/mochareports",
+    "pretest": "npm run clean:reports",
+    "scripts": "cypress run  --spec cypress/e2e/1-getting-started/todo.cy.ts",
+    "chrome:scripts": "cypress run --browser chrome ",
+    "firefox:scripts": "cypress run --browser firefox ",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "test": "npm run scripts || npm run posttest",
+    "chrome:test": "npm run pretest && npm run chrome:scripts || npm run posttest",
+    "firefox:test": "npm run pretest && npm run firefox:scripts || npm run posttest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PipsaKorkiakoski/cypress-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PipsaKorkiakoski/cypress-demo/issues"
+  },
+  "homepage": "https://github.com/PipsaKorkiakoski/cypress-demo#readme"
+}

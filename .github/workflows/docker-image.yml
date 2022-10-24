@@ -24,6 +24,7 @@ jobs:
             runTests: false
 
   example_matrix:
+    needs: install
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest]

@@ -15,8 +15,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
       - name: Cypress install
         uses: cypress-io/github-action@v4.2.0
         with:
@@ -27,15 +25,13 @@ jobs:
     needs: install
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        test: [windows, ubuntu]
         node: [12, 14, 16]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - if: ${{ matrix.npm }}
-        run: npm install -g npm@${{ matrix.npm }}
+      - name: Testi
+        run: echo ${{ matrix.test }}
+    
       - run: npm --version
 
   # ui-chrome-tests:

@@ -8,43 +8,41 @@ on:
 
 jobs:
 
-  build:
-
+  install:
     runs-on: ubuntu-latest
-
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Build and export
-        uses: docker/build-push-action@v3
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Cypress install
+        uses: cypress-io/github-action@v4.2.0 # use the explicit version number
         with:
-          context: .
-          tags: my_cypress_mocha_report
-          outputs: type=docker,dest=/tmp/my_cypress_mocha_report.tar
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: myimage
-          path: /tmp/my_cypress_mocha_report.tar
+          # Disable running of tests within install job
+          runTests: false
 
-  ui-chrome-test:
+  ui-chrome-tests:
+
     runs-on: ubuntu-latest
-    needs: build
-    steps: 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Download artifact
-        uses: actions/download-artifact@v3
+    container:
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+    needs: install
+    strategy:
+      # when one test fails, DO NOT cancel the other
+      # containers, because this will kill Cypress processes
+      # leaving the Dashboard hanging ...
+      # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
+      matrix:
+        # run copies of the current job in parallel
+        containers: [1]
+    steps:
+      - name: "UI Tests - Chrome"
+        uses: cypress-io/github-action@v4.2.0
         with:
-          name: my_cypress_mocha_report
-          path: /tmp
-      - name: Load image
-        run: |
-          docker load --input /tmp/my_cypress_mocha_report.tar
-          docker image ls -a
-      - name: Docker compose
-        run: docker-compose up
+          browser: chrome
+          record: false
+          spec: cypress/e2e/1-getting-started/*
 
     

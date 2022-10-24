@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Testi
         run: echo ${{ matrix.test }}
-      - run: cypress --version
+      - run: npx cypress --version
       - run: npm --version
 
   # ui-chrome-tests:

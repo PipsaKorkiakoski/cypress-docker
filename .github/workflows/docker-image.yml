@@ -25,13 +25,13 @@ jobs:
     needs: install
     strategy:
       matrix:
-        test: [windows, ubuntu]
+        test: [chrome, firefox]
         node: [12, 14, 16]
     runs-on: ubuntu-latest
     steps:
       - name: Testi
         run: echo ${{ matrix.test }}
-    
+      - run: cypress --version
       - run: npm --version
 
   # ui-chrome-tests:

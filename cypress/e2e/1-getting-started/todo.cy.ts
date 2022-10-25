@@ -21,6 +21,9 @@ describe('example to-do app', () => {
   })
 
   it('displays two todo items by default', () => {
+    cy.log('created new user')
+    cy.log(Cypress.env('height'))
+    cy.log(Cypress.env('width'))
     console.log("CYPRESS VARIABLES: ")
     console.log(Cypress.env('height'))
     console.log(Cypress.env('width'))

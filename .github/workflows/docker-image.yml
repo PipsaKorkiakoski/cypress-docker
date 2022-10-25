@@ -29,10 +29,8 @@ jobs:
         run: echo ${{ matrix.test }}
       - run: npx cypress --version
       - run: npm --version
-      - if: ${{ matrix.test == 'chrome'}}
-        run: npm run chrome:scripts
-      - if: ${{ matrix.test == 'firefox'}}
-        run: npm run firefox:scripts
+      - run: npm run ${{ matrix.test }}:scripts
+
 
   # ui-chrome-tests:
 

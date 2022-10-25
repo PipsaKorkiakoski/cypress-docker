@@ -10,8 +10,11 @@ jobs:
   install:
     runs-on: ubuntu-latest
     env:
-      Greeting: Hello
-      First_name: Anna
+
+
+      desktop: "viewportWidth=1280,viewportHeight=800"
+      mobile: "viewportWidth=320,viewportHeight=568"
+      
     permissions:
       id-token: write
       contents: write
@@ -29,16 +32,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
-      - name: Testi
-        run: export $First_name=Krisse
-      - name: Testi2
-        run: echo "$First_name=Mona" >> $First_name
-      - name: Testi3
-        run: echo "$First_name"
+
       - if: ${{ matrix.viewport=='desktop' }}
-        run: echo "$Greeting"
-        env:
-          First_name: Mona
+        run: echo "$desktop"
+  
    
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0

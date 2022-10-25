@@ -62,12 +62,14 @@ jobs:
           name: ${{ matrix.browser }}_${{ matrix.viewport }}
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/     
+          retention-days: 1
       - name: 'Upload Videos'
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.browser }}_${{ matrix.viewport }}_videos
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/videos
+          retention-days: 1
 
 
   # ui-chrome-tests:

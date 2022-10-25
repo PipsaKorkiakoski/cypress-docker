@@ -34,7 +34,7 @@ jobs:
             browser: ${{ matrix.browser }}
             spec: cypress/e2e/1-getting-started/todo.cy.ts
             # env: configFile=cypress.${{ matrix.view }}.json
-            config: viewportWidth=320,viewportHeight=568,
+            config: viewportWidth=320,viewportHeight=568
         # env:
         #   config: cypress.env.json
 #           export CYPRESS_VIEWPORT_WIDTH=800

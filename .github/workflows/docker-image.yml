@@ -29,12 +29,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
+      - name: Testi
+        run: echo "export $First_name=Krisse"
+      - name: Testi2
+        run: echo "$First_name"
       - if: ${{ matrix.viewport=='desktop' }}
         run: echo "$Greeting"
         env:
           First_name: Mona
-      - name: Testi
-        run: echo "$First_name"
+   
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0
         with:

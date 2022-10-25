@@ -31,6 +31,12 @@ jobs:
             runTests: false
 
       - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
+      - name: 'Upload Artifact'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.browser }}_${{ matrix.view }}
+          path: /home/runner/work/cypress-tests/cypress-tests/cypress/reports/mochareports/
 
 
   # ui-chrome-tests:

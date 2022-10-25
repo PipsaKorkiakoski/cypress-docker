@@ -9,12 +9,7 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
-    env:
-
-
-      desktop: "viewportWidth=1280,viewportHeight=800"
-      mobile: "viewportWidth=320,viewportHeight=568"
-      
+    
     permissions:
       id-token: write
       contents: write
@@ -25,17 +20,13 @@ jobs:
       matrix:
         # browser: [chrome, firefox]
         # view: [mobile, desktop]    
-        browser: [chrome, firefox]
-        viewport: [desktop]
+        browser: [chrome, firefox, electron, edge]
+        viewport: [desktop, mobile]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
-
-      - if: ${{ matrix.viewport=='desktop' }}
-        run: echo "$desktop"
-  
    
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0

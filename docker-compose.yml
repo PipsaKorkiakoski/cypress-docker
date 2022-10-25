@@ -1,16 +1,48 @@
 version: "3"
 services:
-  # this container will run Cypress test using built-in Electron browser
-  e2e-electron:
+
+  e2e-electron-desktop:
     image: "my_cypress_mocha_report"
     # command: "test"
-    command: "chrome:desktop:test"
+    command: "electron:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
       - ./cypress/reports/electron:/cypress-docker/cypress/reports
-  e2e-chrome:
+
+  e2e-firefox-desktop:
     image: "my_cypress_mocha_report"
-    command: "chrome:test"
+    # command: "test"
+    command: "firefox:desktop:test"
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports/firefox:/cypress-docker/cypress/reports
+
+  e2e-chrome-desktop:
+    image: "my_cypress_mocha_report"
+    command: "chrome:desktop:test"
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports/chrome:/cypress-docker/cypress/reports
+  
+  e2e-electron-mobile:
+    image: "my_cypress_mocha_report"
+    # command: "test"
+    command: "electron:desktop:test"
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports/electron:/cypress-docker/cypress/reports
+
+  e2e-firefox-mobile:
+    image: "my_cypress_mocha_report"
+    # command: "test"
+    command: "firefox:desktop:test"
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports/firefox:/cypress-docker/cypress/reports
+
+  e2e-chrome-mobile:
+    image: "my_cypress_mocha_report"
+    command: "chrome:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
       - ./cypress/reports/chrome:/cypress-docker/cypress/reports

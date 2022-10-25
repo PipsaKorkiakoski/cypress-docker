@@ -17,20 +17,34 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+
+    "test": "npm run scripts || npm run posttest",
+
     "clean:reports": "mkdir -p cypress/reports && rm -R -f cypress/reports/* && mkdir cypress/reports/mochareports",
     "pretest": "npm run clean:reports",
-    "scripts": "cypress run  --spec cypress/e2e/1-getting-started/todo.cy.ts",
-    "chrome:scripts": "cypress run --browser chrome --spec cypress/e2e/1-getting-started/todo.cy.ts --config viewportWidth=860,viewportHeight=400",
-    "firefox:scripts": "cypress run --browser firefox --spec cypress/e2e/1-getting-started/todo.cy.ts --config viewportWidth=1280,viewportHeight=800",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
     "posttest": "npm run combine-reports && npm run generate-report",
 
-    "test": "npm run scripts || npm run posttest",
-    "chrome:desktop:test": "npm run pretest && npm run chrome:scripts && npm run posttest",
-    "chrome:mobile:test": "npm run pretest && npm run chrome:scripts && npm run posttest",
-    "firefox:mobile:test": "npm run pretest && npm run firefox:scripts && npm run posttest",
-    "firefox:desktop:test": "npm run pretest && npm run firefox:scripts && npm run posttest"
+    "api:scripts": "cypress run --spec cypress/e2e/api.cy.ts",
+
+    "chrome:desktop:scripts": "cypress run --browser chrome --spec cypress/e2e/ui.cy.ts --config viewportWidth=1280,viewportHeight=800",
+    "chrome:mobile:scripts": "cypress run --browser chrome --spec cypress/e2e/ui.cy.ts --config viewportWidth=375,viewportHeight=667",
+    "firefox:desktop:scripts": "cypress run --browser firefox --spec cypress/e2e/ui.cy.ts --config viewportWidth=1280,viewportHeight=800",
+    "firefox:mobile:scripts": "cypress run --browser firefox --spec cypress/e2e/ui.cy.ts --config viewportWidth=375,viewportHeight=667",
+    "electron:desktop:scripts": "cypress run --browser electron --spec cypress/e2e/ui.cy.ts --config viewportWidth=1280,viewportHeight=800",
+    "electron:mobile:scripts": "cypress run --browser electron --spec cypress/e2e/ui.cy.ts --config viewportWidth=375,viewportHeight=667",
+    "edge:desktop:scripts": "cypress run --browser edge --spec cypress/e2e/ui.cy.ts --config viewportWidth=1280,viewportHeight=800",
+    "edge:mobile:scripts": "cypress run --browser edge --spec cypress/e2e/ui.cy.ts --config viewportWidth=375,viewportHeight=667",
+
+    "chrome:desktop:test": "npm run pretest && npm run chrome:desktop:scripts && npm run posttest",
+    "chrome:mobile:test": "npm run pretest && npm run chrome:mobile:scripts && npm run posttest",
+    "firefox:mobile:test": "npm run pretest && npm run firefox:mobile:scripts && npm run posttest",
+    "firefox:desktop:test": "npm run pretest && npm run firefox:desktop:scripts && npm run posttest",
+    "electron:desktop:test": "npm run pretest && npm run electron:desktop:scripts && npm run posttest",
+    "electron:mobile:test": "npm run pretest && npm run electron:mobile:scripts && npm run posttest",
+    "edge:desktop:test": "npm run pretest && npm run edge:desktop:scripts && npm run posttest",
+    "edge:mobile:test": "npm run pretest && npm run edge:mobile:scripts && npm run posttest"
   },
   "repository": {
     "type": "git",

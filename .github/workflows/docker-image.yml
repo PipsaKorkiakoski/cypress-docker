@@ -30,9 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Testi
-        run: echo "export $First_name=Krisse"
+        run: export $First_name=Krisse
       - name: Testi2
-        run: echo "$First_name"
+        run: echo "$First_name=Mona" >> $First_name
       - if: ${{ matrix.viewport=='desktop' }}
         run: echo "$Greeting"
         env:

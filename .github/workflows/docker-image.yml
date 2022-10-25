@@ -57,7 +57,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.browser }}_${{ matrix.view }}
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
+      - name: 'Upload Videos'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.browser }}_${{ matrix.view }}_videos
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/videos/todo.cy.ts.mp4 
 
 
   # ui-chrome-tests:

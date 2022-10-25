@@ -33,7 +33,11 @@ jobs:
             # runTests: false
             browser: ${{ matrix.browser }}
             spec: cypress/e2e/1-getting-started/todo.cy.ts
-            config: viewportWidth=320 viewportHeight=568,
+            # config: viewportWidth=320, viewportHeight=568,
+        env:
+          CYPRESS_height: 320
+          CYPRESS_width: 568
+
       
       # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
       - name: Create mochareports folder

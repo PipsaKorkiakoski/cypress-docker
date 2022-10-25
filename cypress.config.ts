@@ -2,8 +2,8 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   env: {
-    height: 1000,
-    width: 1280
+    width: 1000,
+    height: 1280
   },
   chromeWebSecurity: false,
   reporter: 'mochawesome',

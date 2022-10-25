@@ -26,8 +26,10 @@
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
     "posttest": "npm run combine-reports && npm run generate-report",
     "test": "npm run scripts || npm run posttest",
-    "chrome:test": "npm run pretest && npm run chrome:scripts || npm run posttest",
-    "firefox:test": "npm run pretest && npm run firefox:scripts || npm run posttest"
+    "chrome:desktop:test": "npm run pretest && npm run chrome:scripts || npm run posttest",
+    "chrome:mobile:test": "npm run pretest && npm run chrome:scripts || npm run posttest",
+    "firefox:mobile:test": "npm run pretest && npm run firefox:scripts || npm run posttest",
+    "firefox:desktop:test": "npm run pretest && npm run firefox:scripts || npm run posttest"
   },
   "repository": {
     "type": "git",

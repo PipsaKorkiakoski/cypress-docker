@@ -17,8 +17,8 @@ jobs:
       options: --user 1001
     strategy:
       matrix:
-        test: [chrome, firefox]
-        node: [12, 14, 16]
+        browser: [chrome, firefox]
+        view: [mobile, desktop]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -30,11 +30,7 @@ jobs:
             # Disable running of tests within install job
             runTests: false
 
-      - name: Testi
-        run: echo ${{ matrix.test }}
-      - run: npx cypress --version
-      - run: npm --version
-      - run: npm run ${{ matrix.test }}:scripts
+      - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
 
 
   # ui-chrome-tests:

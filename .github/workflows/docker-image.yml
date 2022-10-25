@@ -17,7 +17,9 @@ jobs:
       options: --user 1001
     strategy:
       matrix:
-        browser: [chrome, firefox]
+        # browser: [chrome, firefox]
+        # view: [mobile, desktop]    
+        browser: [chrome]
         view: [mobile, desktop]
     steps:
       - name: Checkout
@@ -36,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.browser }}_${{ matrix.view }}
-          path: /home/runner/work/cypress-tests/cypress-tests/cypress/reports/mochareports/
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/
 
 
   # ui-chrome-tests:

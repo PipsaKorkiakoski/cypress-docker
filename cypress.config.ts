@@ -1,6 +1,8 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
+  viewportWidth: 1000,
+  viewportHeight: 1280,
   env: {
     width: 1000,
     height: 1280
@@ -18,7 +20,7 @@ export default defineConfig({
     // viewportHeight: Cypress.env('CYPRESS_height') || 1000,
     // viewportWidth: Cypress.env('CYPRESS_width') || 1280,
     setupNodeEvents(on, config) {
-
+      console.log(config)
       // implement node event listeners here
     },
   },

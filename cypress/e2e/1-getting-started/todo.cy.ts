@@ -17,13 +17,14 @@ describe('example to-do app', () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
+
     cy.log('created new user')
-    cy.log(Cypress.env('height'))
-    cy.log(Cypress.env('width'))
-    console.log("CYPRESS VARIABLES: ")
-    console.log(Cypress.env('height'))
-    console.log(Cypress.env('width'))
-    cy.viewport(Cypress.env('width'), Cypress.env('height'))
+    const leveys = Cypress.config().viewportWidth.toString()
+    const korkeus = Cypress.config().viewportHeight.toString()
+    cy.log(leveys)
+    cy.log(korkeus)
+
+    cy.viewport(Cypress.config('viewportWidth'), Cypress.config('viewportHeight'))
     cy.visit('https://example.cypress.io/todo')
   })
 

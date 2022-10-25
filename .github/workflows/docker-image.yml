@@ -47,6 +47,9 @@ jobs:
       - name: Merge results to json
         if: always()
         run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}/report.json
+      - name: Generate html -page
+        if: always()
+        run: npx marge cypress/reports/mochareports/${{ matrix.browser }}/report.json -f report -o cypress/reports/mochareports/${{ matrix.browser }}
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3

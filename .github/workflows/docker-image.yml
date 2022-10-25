@@ -9,6 +9,9 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+      First_name: Anna
     permissions:
       id-token: write
       contents: write
@@ -20,12 +23,18 @@ jobs:
         # browser: [chrome, firefox]
         # view: [mobile, desktop]    
         browser: [chrome, firefox]
-        view: [desktop]
+        viewport: [desktop]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
+      - if: ${{ matrix.viewport=='desktop' }}
+        run: echo "$Greeting"
+        env:
+          First_name: Mona
+      - name: Testi
+        run: echo "$First_name"
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0
         with:
@@ -56,13 +65,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.browser }}_${{ matrix.view }}
+          name: ${{ matrix.browser }}_${{ matrix.viewport }}
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
       - name: 'Upload Videos'
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.browser }}_${{ matrix.view }}_videos
+          name: ${{ matrix.browser }}_${{ matrix.viewport }}_videos
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/videos/todo.cy.ts.mp4 
 
 

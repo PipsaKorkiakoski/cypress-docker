@@ -27,6 +27,7 @@ describe('example to-do app', () => {
     console.log("CYPRESS VARIABLES: ")
     console.log(Cypress.env('height'))
     console.log(Cypress.env('width'))
+    cy.viewport(Cypress.env('height'), Cypress.env('width') )
     // We use the `cy.get()` command to get all elements that match the selector.
     // Then, we use `should` to assert that there are two matched items,
     // which are the two default items.

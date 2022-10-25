@@ -35,8 +35,10 @@ jobs:
             spec: cypress/e2e/1-getting-started/todo.cy.ts
             # config: viewportWidth=320, viewportHeight=568,
         env:
-          CYPRESS_VIEWPORT_WIDTH: 800
-          CYPRESS_VIEWPORT_HEIGHT: 600
+          height: 800
+          width: 600
+#           export CYPRESS_VIEWPORT_WIDTH=800
+# export CYPRESS_VIEWPORT_HEIGHT=600
 
       
       # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test

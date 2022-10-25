@@ -33,6 +33,8 @@ jobs:
         run: export $First_name=Krisse
       - name: Testi2
         run: echo "$First_name=Mona" >> $First_name
+      - name: Testi3
+        run: echo "$First_name"
       - if: ${{ matrix.viewport=='desktop' }}
         run: echo "$Greeting"
         env:

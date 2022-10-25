@@ -12,7 +12,9 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    container: cypress/browsers:node16.13.0-chrome95-ff94
+    container: 
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+      options: --user 1001
     strategy:
       matrix:
         test: [chrome, firefox]

@@ -32,6 +32,8 @@ jobs:
             # # Disable running of tests within install job
             # runTests: false
             browser: ${{ matrix.browser }}
+            spec: cypress/e2e/1-getting-started/todo.cy.ts
+            config: viewportWidth=320, viewportHeight=568,
       
       # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
       - name: Create mochareports folder
@@ -46,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.browser }}_${{ matrix.view }}
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/
 
 
   # ui-chrome-tests:

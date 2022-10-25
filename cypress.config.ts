@@ -1,6 +1,10 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
+  env: {
+    height: 1000,
+    width: 1280
+  },
   chromeWebSecurity: false,
   reporter: 'mochawesome',
   reporterOptions: {
@@ -11,10 +15,10 @@ export default defineConfig({
     reportDir: "cypress/reports/mocha",
   },
   e2e: {
-    viewportHeight: Cypress.env('CYPRESS_height') || 1000,
-    viewportWidth: Cypress.env('CYPRESS_width') || 1280,
+    // viewportHeight: Cypress.env('CYPRESS_height') || 1000,
+    // viewportWidth: Cypress.env('CYPRESS_width') || 1280,
     setupNodeEvents(on, config) {
-      
+
       // implement node event listeners here
     },
   },

@@ -22,8 +22,8 @@ describe('example to-do app', () => {
 
   it('displays two todo items by default', () => {
     console.log("CYPRESS VARIABLES: ")
-    console.log(Cypress.env('CYPRESS_height'))
-    console.log(Cypress.env('CYPRESS_width'))
+    console.log(Cypress.env('height'))
+    console.log(Cypress.env('width'))
     // We use the `cy.get()` command to get all elements that match the selector.
     // Then, we use `should` to assert that there are two matched items,
     // which are the two default items.

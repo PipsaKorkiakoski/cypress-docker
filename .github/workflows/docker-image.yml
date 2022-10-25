@@ -40,12 +40,13 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0
         with:
-            # # Disable running of tests within install job
-            # runTests: false
-            browser: ${{ matrix.browser }}
-            spec: cypress/e2e/1-getting-started/todo.cy.ts
-            # env: configFile=cypress.${{ matrix.view }}.json
-            config: viewportWidth=320,viewportHeight=568
+          command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
+            # # # # # Disable running of tests within install job
+            # # # # runTests: false
+            # # # browser: ${{ matrix.browser }}
+            # # # spec: cypress/e2e/1-getting-started/todo.cy.ts
+            # # # # env: configFile=cypress.${{ matrix.view }}.json
+            # # # config: viewportWidth=320,viewportHeight=568
         # env:
         #   config: cypress.env.json
 #           export CYPRESS_VIEWPORT_WIDTH=800

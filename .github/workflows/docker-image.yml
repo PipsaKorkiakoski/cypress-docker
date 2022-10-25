@@ -29,6 +29,8 @@ jobs:
         node: [12, 14, 16]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Testi
         run: echo ${{ matrix.test }}
       - run: npx cypress --version

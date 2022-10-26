@@ -83,9 +83,7 @@ jobs:
           name: chrome_desktop
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
 
-      - name: Test 1
-        run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mocha/
-      
+ 
       - name: 'Upload results'
         if: always()
         uses: actions/upload-artifact@v3

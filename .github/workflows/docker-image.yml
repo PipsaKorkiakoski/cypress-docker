@@ -60,7 +60,7 @@ jobs:
         run: ls cypress/reports/mochareports
       
       - name: Create folder summary
-        run: mkdir summary
+        run: mkdir cypress/reports/mochareports/summary
 
       - name: Merge all results to one json
         if: always()

@@ -80,8 +80,9 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/download-artifact@master
         with:
-          name: chrome_desktop
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
+          name: all_results
+          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
+          path: downloaded_artifacts
 
  
       - name: 'Upload results'

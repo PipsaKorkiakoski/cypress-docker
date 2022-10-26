@@ -1,0 +1,80 @@
+name: Cypress tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
+        viewport: [desktop]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+   
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
+
+      - name: Copy videos and screenshots
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+          cp -r cypress/screenshots public/screenshots
+
+      - name: Merge results to json
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
+      - name: Generate html -page
+        if: always()
+        run: npx marge cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports
+      - name: Browse folder
+        run: ls cypress/reports/mochareports/
+
+      - name: 'Upload Artifact'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: RESULTS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports     
+          retention-days: 1
+
+      
+      - uses: actions/download-artifact@master
+        with:
+          name: RESULTS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results 
+      
+      - name: Browse folder
+        run: ls cypress/reports/mochareports/ci_results/
+      
+      - name: Merge all results to one json
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mochareports/ci_results/*.json > cypress/reports/mochareports/ci_results/summary_report.json
+      - name: Generate one html -page
+        if: always()
+        run: npx marge cypress/reports/mochareports/ci_results/summary_report.json -f summary_report -o cypress/reports/mochareports/ci_results
+      - name: Copy results to public
+        run: cp cypress/reports/mochareports/ci_results /public
+      - name: 'Upload Artifact'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: RESULTS
+          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results     
+          retention-days: 1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+

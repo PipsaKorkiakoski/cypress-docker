@@ -74,13 +74,23 @@ jobs:
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results     
           retention-days: 1
-      - name: 'Upload Videos'
-        if: always()
-        uses: actions/upload-artifact@v3
+
+      
+      - uses: actions/download-artifact@master
         with:
-          name: ${{ matrix.browser }}_${{ matrix.viewport }}_videos
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/videos
-          retention-days: 1
+          name: RESULTS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results 
+      
+      - name: Browse folder
+        run: ls cypress/reports/mochareports/ci_results/
+      # - name: 'Upload Videos'
+      #   if: always()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: ${{ matrix.browser }}_${{ matrix.viewport }}_videos
+      #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/videos
+      #     retention-days: 1
+
       # - name: 'Upload All Artifact'
       #   if: always()
       #   uses: actions/upload-artifact@v3

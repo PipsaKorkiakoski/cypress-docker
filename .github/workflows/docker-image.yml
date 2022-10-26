@@ -88,12 +88,14 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/download-artifact@master
         with:
-          name: ALL RESULTS
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
+          name: RESULTS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results 
           # path: downloaded_artifacts
       - name: Test 1
+        if: always()
         run: ls
       - name: Test 2
+        if: always()
         run: pwd
 
  

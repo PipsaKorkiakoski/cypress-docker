@@ -93,7 +93,7 @@ jobs:
           # path: downloaded_artifacts
       - name: Test 1
         if: always()
-        run: ls /cypress/reports/mochareports
+        run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results
       - name: Test 2
         if: always()
         run: pwd

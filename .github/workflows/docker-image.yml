@@ -20,7 +20,7 @@ jobs:
       matrix:
         # browser: [chrome, firefox]
         # view: [mobile, desktop]    
-        browser: [chrome, firefox, electron, edge]
+        browser: [chrome, firefox, electron, edge, webkit]
         viewport: [desktop, mobile]
     steps:
       - name: Checkout

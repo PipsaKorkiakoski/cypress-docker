@@ -34,26 +34,10 @@ jobs:
         uses: cypress-io/github-action@v4.2.0
         with:
           command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
-            # # # # # Disable running of tests within install job
-            # # # # runTests: false
-            # # # browser: ${{ matrix.browser }}
-            # # # spec: cypress/e2e/1-getting-started/todo.cy.ts
-            # # # # env: configFile=cypress.${{ matrix.view }}.json
-            # # # config: viewportWidth=320,viewportHeight=568
-        # env:
-        #   config: cypress.env.json
-#           export CYPRESS_VIEWPORT_WIDTH=800
-# export CYPRESS_VIEWPORT_HEIGHT=600
 
-      
-      # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
-      # # # - name: Create mochareports folder
-      # # #   run: mkdir cypress/reports/mochareports
-      - name: Create report folder
-        run: mkdir cypress/reports/mochareports/summary
       - name: Merge results to json
         if: always()
-        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
+        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}.json
 
       - name: Browse folder
         run: ls cypress/reports/mochareports
@@ -62,25 +46,28 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: RESULTS   
+          name: JSONS   
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports     
           retention-days: 1
 
       
       - uses: actions/download-artifact@master
         with:
-          name: RESULTS
+          name: JSONS
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports 
       
       - name: Browse folder
         run: ls cypress/reports/mochareports
       
+      - name: Create folder summary
+        run: mkdir summary
+
       - name: Merge all results to one json
         if: always()
-        run: npx mochawesome-merge cypress/reports/mochareports/*.json > cypress/reports/mochareports/summary/summary_report.json
+        run: npx mochawesome-merge cypress/reports/mochareports/*.json > cypress/reports/mochareports/summary/summary.json
       - name: Generate one html -page
         if: always()
-        run: npx marge cypress/reports/mochareports/summary/summary_report.json -f summary_report -o cypress/reports/mochareports/summary
+        run: npx marge cypress/reports/mochareports/summary/summary.json -f summary -o cypress/reports/mochareports/summary
 
       - name: 'Upload Artifact'
         if: always()

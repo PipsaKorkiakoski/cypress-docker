@@ -49,21 +49,21 @@ jobs:
       # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
       # # # - name: Create mochareports folder
       # # #   run: mkdir cypress/reports/mochareports
-      # - name: Create report folder
-      #   run: mkdir cypress/reports/mochareports
+      - name: Create report folder
+        run: mkdir cypress/reports/mochareports/ci_results
       - name: Merge results to json
         if: always()
-        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
+        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
       - name: Generate html -page
         if: always()
-        run: npx marge cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports
+        run: npx marge cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports/ci_results
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: RESULTS
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/     
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results     
           retention-days: 1
       - name: 'Upload Videos'
         if: always()
@@ -81,16 +81,20 @@ jobs:
       #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/     
       #     retention-days: 1
 
-  # results:
-  #   needs: install
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@master
-  #     - uses: actions/download-artifact@master
-  #       with:
-  #         name: all_reports
-  #         # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
-  #         path: downloaded_artifacts
+  results:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/download-artifact@master
+        with:
+          name: ALL RESULTS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
+          # path: downloaded_artifacts
+      - name: Test 1
+        run: ls
+      - name: Test 2
+        run: pwd
 
  
   #     - name: 'Upload results'

@@ -57,6 +57,14 @@ jobs:
       - name: Generate html -page
         if: always()
         run: npx marge cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports/ci_results
+     
+      - name: Merge all results to one json
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mochareports/ci_results/*.json > cypress/reports/mochareports/ci_results/summary_report.json
+      - name: Generate one html -page
+        if: always()
+        run: npx marge cypress/reports/mochareports/ci_results/summary_report.json -f summary_report -o cypress/reports/mochareports/ci_results
+     
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3
@@ -81,40 +89,40 @@ jobs:
       #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/     
       #     retention-days: 1
 
-  results:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/download-artifact@master
-        with:
-          name: RESULTS
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results 
-          # path: downloaded_artifacts
-      - name: Test 1
-        if: always()
-        run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results
-      - name: Test 2
-        if: always()
-        run: pwd
+  # results:
+  #   needs: install
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/download-artifact@master
+  #       with:
+  #         name: RESULTS
+  #         path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results 
+  #         # path: downloaded_artifacts
+  #     - name: Test 1
+  #       if: always()
+  #       run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results
+  #     - name: Test 2
+  #       if: always()
+  #       run: pwd
 
-      - name: Create result folder
-        run: mkdir results
-      - name: Merge results to json
-        if: always()
-        run: npx mochawesome-merge /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results/*.json > results/summary_report.json
-      - name: Generate html -page
-        if: always()
-        run: npx marge results/summary_report.json -f summary_report -o results
+  #     - name: Create result folder
+  #       run: mkdir results
+  #     - name: Merge results to json
+  #       if: always()
+  #       run: npx mochawesome-merge /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results/*.json > results/summary_report.json
+  #     - name: Generate html -page
+  #       if: always()
+  #       run: npx marge results/summary_report.json -f summary_report -o results
 
-      - name: 'Upload Artifact'
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: RESULTS
-          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
-          path: results/   
-          retention-days: 1
+  #     - name: 'Upload Artifact'
+  #       if: always()
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: RESULTS
+  #         # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
+  #         path: results/   
+  #         retention-days: 1
  
   #     - name: 'Upload results'
   #       if: always()

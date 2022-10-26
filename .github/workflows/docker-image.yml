@@ -86,7 +86,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: RESULTS
+          name: SUMMARY
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/summary     
           retention-days: 1

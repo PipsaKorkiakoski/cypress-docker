@@ -59,13 +59,7 @@ jobs:
         run: npx marge cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports/ci_results
       - name: Browse folder
         run: ls cypress/reports/mochareports/ci_results/
-      - name: Merge all results to one json
-        if: always()
-        run: npx mochawesome-merge cypress/reports/mochareports/ci_results/*.json > cypress/reports/mochareports/ci_results/summary_report.json
-      - name: Generate one html -page
-        if: always()
-        run: npx marge cypress/reports/mochareports/ci_results/summary_report.json -f summary_report -o cypress/reports/mochareports/ci_results
-     
+
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3
@@ -83,6 +77,23 @@ jobs:
       
       - name: Browse folder
         run: ls cypress/reports/mochareports/ci_results/
+      
+      - name: Merge all results to one json
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mochareports/ci_results/*.json > cypress/reports/mochareports/ci_results/summary_report.json
+      - name: Generate one html -page
+        if: always()
+        run: npx marge cypress/reports/mochareports/ci_results/summary_report.json -f summary_report -o cypress/reports/mochareports/ci_results
+
+      - name: 'Upload Artifact'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: RESULTS
+          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ci_results     
+          retention-days: 1
+          
       # - name: 'Upload Videos'
       #   if: always()
       #   uses: actions/upload-artifact@v3

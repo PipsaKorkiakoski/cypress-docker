@@ -22,7 +22,7 @@ jobs:
         # view: [mobile, desktop]    
         # browser: [chrome, firefox, electron, edge, webkit]
         # browser: [chrome, firefox, electron, edge]
-        browser: [chrome]
+        browser: [chrome, firefox]
         viewport: [desktop]
     steps:
       - name: Checkout
@@ -84,13 +84,13 @@ jobs:
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/ 
 
       - name: Test 1
-        run: ls
+        run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mocha/
       
       - name: 'Upload results'
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Final_results
+          name: mochareports_results
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/
           retention-days: 1
 

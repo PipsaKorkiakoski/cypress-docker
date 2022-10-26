@@ -93,10 +93,19 @@ jobs:
           # path: downloaded_artifacts
       - name: Test 1
         if: always()
-        run: ls
+        run: ls /cypress/reports/mochareports/ci_results 
       - name: Test 2
         if: always()
         run: pwd
+
+      # - name: Create report folder
+      #   run: mkdir cypress/reports/mochareports/ci_results
+      # - name: Merge results to json
+      #   if: always()
+      #   run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
+      # - name: Generate html -page
+      #   if: always()
+      #   run: npx marge cypress/reports/mochareports/ci_results/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports/ci_results
 
  
   #     - name: 'Upload results'

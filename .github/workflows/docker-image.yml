@@ -49,14 +49,14 @@ jobs:
       # - run: npm run ${{ matrix.browser }}:${{ matrix.view }}:test
       # # # - name: Create mochareports folder
       # # #   run: mkdir cypress/reports/mochareports
-      - name: Create report ${{ matrix.browser }} folder
-        run: mkdir cypress/reports/mochareports/${{ matrix.browser }}
+      # - name: Create report folder
+      #   run: mkdir cypress/reports/mochareports
       - name: Merge results to json
         if: always()
-        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}/report.json
+        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json
       - name: Generate html -page
         if: always()
-        run: npx marge cypress/reports/mochareports/${{ matrix.browser }}/report.json -f report -o cypress/reports/mochareports/${{ matrix.browser }}
+        run: npx marge cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}_report.json -f ${{ matrix.browser }}_${{ matrix.viewport }}_report -o cypress/reports/mochareports
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3

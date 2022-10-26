@@ -35,39 +35,48 @@ jobs:
         with:
           command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
 
-      - name: Merge results to json
-        if: always()
-        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/${{ matrix.browser }}_${{ matrix.viewport }}.json
+      - name: Create new awesome folder
+        run: mkdir cypress/reports/awesomereports
 
       - name: Browse folder
-        run: ls cypress/reports/mochareports
+        run: ls cypress/reports/awesomereports
+      
+      - name: Browse folder
+        run: ls cypress/reports/mocha
+
+      - name: Merge results to json
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/awesomereports/${{ matrix.browser }}_${{ matrix.viewport }}.json
+
+      - name: Browse folder
+        run: ls cypress/reports/awesomereports
 
       - name: 'Upload Artifact'
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: JSONS   
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports     
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
           retention-days: 1
 
       
       - uses: actions/download-artifact@master
         with:
           name: JSONS
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports 
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports 
       
       - name: Browse folder
-        run: ls cypress/reports/mochareports
+        run: ls cypress/reports/awesomereports
       
       - name: Create folder summary
-        run: mkdir cypress/reports/mochareports/summary
+        run: mkdir cypress/reports/awesomereports/summary
 
       - name: Merge all results to one json
         if: always()
-        run: npx mochawesome-merge cypress/reports/mochareports/*.json > cypress/reports/mochareports/summary/summary.json
+        run: npx mochawesome-merge cypress/reports/awesomereports/*.json > cypress/reports/awesomereports/summary/summary.json
       - name: Generate one html -page
         if: always()
-        run: npx marge cypress/reports/mochareports/summary/summary.json -f summary -o cypress/reports/mochareports/summary
+        run: npx marge cypress/reports/awesomereports/summary/summary.json -f summary -o cypress/reports/awesomereports/summary
 
       - name: 'Upload Artifact'
         if: always()
@@ -75,7 +84,7 @@ jobs:
         with:
           name: SUMMARY
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/summary     
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary     
           retention-days: 1
           
       # - name: 'Upload Videos'

@@ -37,6 +37,7 @@ jobs:
           command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
 
       - name: Create new awesome folder
+        if: always()
         run: mkdir cypress/reports/awesomereports
 
       - name: Merge results to json
@@ -47,6 +48,7 @@ jobs:
         run: npx marge cypress/reports/awesomereports/${{ matrix.browser }}_${{ matrix.viewport }}.json -f ${{ matrix.browser }}_${{ matrix.viewport }} -o cypress/reports/awesomereports
 
       - name: Browse folder
+        if: always()
         run: ls cypress/reports/awesomereports
 
       - name: 'Upload Artifact'
@@ -59,14 +61,17 @@ jobs:
 
       
       - uses: actions/download-artifact@master
+        if: always()
         with:
           name: RESULTS
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports 
       
       - name: Browse folder
+        if: always()
         run: ls cypress/reports/awesomereports
       
       - name: Create folder summary
+        if: always()
         run: mkdir cypress/reports/awesomereports/summary
 
       - name: Merge all results to one json

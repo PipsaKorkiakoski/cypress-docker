@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 4,
-    "tests": 4,
-    "passes": 3,
+    "tests": 5,
+    "passes": 4,
     "pending": 0,
     "failures": 1,
-    "start": "2022-10-27T06:35:26.370Z",
-    "end": "2022-10-27T06:35:48.777Z",
-    "duration": 6928,
-    "testsRegistered": 4,
-    "passPercent": 75,
+    "start": "2022-10-27T10:56:39.300Z",
+    "end": "2022-10-27T10:57:32.287Z",
+    "duration": 7709,
+    "testsRegistered": 5,
+    "passPercent": 80,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b074f258-6e4e-4ece-a7ff-7a3ba12952a7",
+      "uuid": "7467972c-c047-46da-8318-6161a4936b3e",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "8058bc0f-db49-40ac-b36e-d5092135ceca",
+          "uuid": "b3d15144-f831-46fb-8153-27d050fa0af1",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 613,
+              "duration": 905,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "2a4edb51-6ba6-4441-827b-f0b7bb799bb2",
-              "parentUUID": "8058bc0f-db49-40ac-b36e-d5092135ceca",
+              "uuid": "97d7456a-fdd9-40da-8c8b-4254f72a7217",
+              "parentUUID": "b3d15144-f831-46fb-8153-27d050fa0af1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2a4edb51-6ba6-4441-827b-f0b7bb799bb2"
+            "97d7456a-fdd9-40da-8c8b-4254f72a7217"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 613,
+          "duration": 905,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,7 +76,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "3548b3d7-ee76-4244-bba9-ca2a4e04e043",
+      "uuid": "4cbbf51b-8380-4512-8a29-5885e4b0d01e",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -85,7 +85,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "aa7f55c9-42e4-4ce5-9672-ba490596001d",
+          "uuid": "86e6367f-d6fd-4a77-b21f-c08139870f1f",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -96,7 +96,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 796,
+              "duration": 686,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -105,20 +105,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "8c4cda2f-1ee1-4168-9c4b-b0f72c79e353",
-              "parentUUID": "aa7f55c9-42e4-4ce5-9672-ba490596001d",
+              "uuid": "44e23057-8150-4791-9e47-760d3a342376",
+              "parentUUID": "86e6367f-d6fd-4a77-b21f-c08139870f1f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8c4cda2f-1ee1-4168-9c4b-b0f72c79e353"
+            "44e23057-8150-4791-9e47-760d3a342376"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 796,
+          "duration": 686,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -134,7 +134,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "019eb6b9-3cd3-42ab-aa0f-4a69ea75cc99",
+      "uuid": "b6aa67b2-a4dc-4fec-8038-300d9f821d6f",
       "title": "",
       "fullFile": "cypress/e2e/api.cy.ts",
       "file": "cypress/e2e/api.cy.ts",
@@ -143,7 +143,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "874f04a4-c8da-4db4-bf47-30eccb367eae",
+          "uuid": "b8284644-3a72-43c7-97d2-2765633d3db1",
           "title": "Actions",
           "fullFile": "",
           "file": "",
@@ -154,7 +154,7 @@
               "title": ".type() - type into a DOM element",
               "fullTitle": "Actions .type() - type into a DOM element",
               "timedOut": null,
-              "duration": 4879,
+              "duration": 4926,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -167,20 +167,40 @@
                 "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.action-something`, but never found it.\n    at ./cypress/e2e/api.cy.ts/ (webpack:///./cypress/e2e/api.cy.ts:12:7)\n    at ../driver/src/cypress/cy.ts/setRunnable/runnable.fn (https://example.cypress.io/__cypress/runner/cypress_runner.js:157640:43)\n    at callFn (https://example.cypress.io/__cypress/runner/cypress_runner.js:107910:21)\n    at ../driver/src/cypress/runner.ts/create/onRunnableRun (https://example.cypress.io/__cypress/runner/cypress_runner.js:164958:30)\n    at finallyHandler (https://example.cypress.io/__cypress/runner/cypress_runner.js:7872:23)\n    at tryCatcher (https://example.cypress.io/__cypress/runner/cypress_runner.js:11318:23)\n    at ../../node_modules/bluebird/js/release/promise.js/</module.exports/Promise.prototype._settlePromiseFromHandler (https://example.cypress.io/__cypress/runner/cypress_runner.js:9253:31)\n    at ../../node_modules/bluebird/js/release/promise.js/</module.exports/Promise.prototype._settlePromise (https://example.cypress.io/__cypress/runner/cypress_runner.js:9310:18)\n    at ../../node_modules/bluebird/js/release/promise.js/</module.exports/Promise.prototype._settlePromise0 (https://example.cypress.io/__cypress/runner/cypress_runner.js:9355:10)\n    at ../../node_modules/bluebird/js/release/promise.js/</module.exports/Promise.prototype._settlePromises (https://example.cypress.io/__cypress/runner/cypress_runner.js:9435:18)\n    at _drainQueueStep (https://example.cypress.io/__cypress/runner/cypress_runner.js:6025:12)\n    at _drainQueue (https://example.cypress.io/__cypress/runner/cypress_runner.js:6018:24)\n    at ../../node_modules/bluebird/js/release/async.js/</Async.prototype._drainQueues (https://example.cypress.io/__cypress/runner/cypress_runner.js:6034:16)\n    at ../../node_modules/bluebird/js/release/async.js/</Async/this.drainQueues (https://example.cypress.io/__cypress/runner/cypress_runner.js:5904:14)",
                 "diff": null
               },
-              "uuid": "3d8f642e-ab4b-4649-b8ee-342b1e65f079",
-              "parentUUID": "874f04a4-c8da-4db4-bf47-30eccb367eae",
+              "uuid": "acf589ab-952e-462c-bb14-5c07896d1ea8",
+              "parentUUID": "b8284644-3a72-43c7-97d2-2765633d3db1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": ".focus() - focus on a DOM element",
+              "fullTitle": "Actions .focus() - focus on a DOM element",
+              "timedOut": null,
+              "duration": 488,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/focus\ncy.get('.action-focus').focus()\n    .should('have.class', 'focus')\n    .prev().should('have.attr', 'style', 'color: orange;');",
+              "err": {},
+              "uuid": "a7a4767a-5254-4d83-b56a-35f2aef5a835",
+              "parentUUID": "b8284644-3a72-43c7-97d2-2765633d3db1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
+          "passes": [
+            "a7a4767a-5254-4d83-b56a-35f2aef5a835"
+          ],
           "failures": [
-            "3d8f642e-ab4b-4649-b8ee-342b1e65f079"
+            "acf589ab-952e-462c-bb14-5c07896d1ea8"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 4879,
+          "duration": 5414,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -196,7 +216,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "0a9be72c-6b3e-4d47-8e29-7a88e24c0141",
+      "uuid": "2870b5f6-0314-4c88-85e3-e90716b81d66",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -205,7 +225,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2be3590b-cd3a-4cbb-9660-51fe209d1cf5",
+          "uuid": "0bf814ee-74ba-4b12-b680-6ad693dd3e81",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -216,7 +236,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 640,
+              "duration": 704,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -225,20 +245,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "95eb4ee8-4f9f-41d4-b1fc-c206e7eb2917",
-              "parentUUID": "2be3590b-cd3a-4cbb-9660-51fe209d1cf5",
+              "uuid": "cb34b405-9c11-4bfe-a937-b78f20d6d325",
+              "parentUUID": "0bf814ee-74ba-4b12-b680-6ad693dd3e81",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "95eb4ee8-4f9f-41d4-b1fc-c206e7eb2917"
+            "cb34b405-9c11-4bfe-a937-b78f20d6d325"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 640,
+          "duration": 704,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

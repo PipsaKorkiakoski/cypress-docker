@@ -83,6 +83,15 @@ jobs:
           # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary     
           retention-days: 1
+      
+      - name: 'Upload HTML'
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: summary_html
+          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary/summary.html     
+          retention-days: 1
           
       # - name: 'Upload Videos'
       #   if: always()

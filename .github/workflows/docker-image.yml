@@ -88,13 +88,16 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - uses: actions/download-artifact@master
         with:
           name: SUMMARY
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary
       - run: ls 
+      - run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary
       - name: Create folder public
-        run: mkdir /public
+        run: mkdir public
 
       
 

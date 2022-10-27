@@ -38,7 +38,7 @@ jobs:
       - name: Create new awesome folder
         run: |
           if ! -d test -f "$FILE"; then
-              echo "Hello world"
+              mkdir cypress/reports/awesomereports
           fi
         env: 
           FILE: "cypress/reports/awesomereports"

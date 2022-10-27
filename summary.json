@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2022-10-27T05:33:20.253Z",
-    "end": "2022-10-27T05:33:24.004Z",
-    "duration": 822,
+    "start": "2022-10-27T05:37:49.638Z",
+    "end": "2022-10-27T05:37:53.223Z",
+    "duration": 965,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "472973c0-ea8d-44c4-99ae-3aa067c2172c",
+      "uuid": "a03b45ea-121d-4d36-aae5-fde6aaeb9c89",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "dc9018d3-eca6-4e21-bff3-c483f5ed109f",
+          "uuid": "bdb4adc1-dc94-4f5a-b588-0cff345fd87b",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 822,
+              "duration": 965,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "f3016627-77bb-40ce-8674-be019af12eeb",
-              "parentUUID": "dc9018d3-eca6-4e21-bff3-c483f5ed109f",
+              "uuid": "5d2c4b38-f56a-491e-8202-209813c72b9b",
+              "parentUUID": "bdb4adc1-dc94-4f5a-b588-0cff345fd87b",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f3016627-77bb-40ce-8674-be019af12eeb"
+            "5d2c4b38-f56a-491e-8202-209813c72b9b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 822,
+          "duration": 965,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

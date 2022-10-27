@@ -23,7 +23,7 @@ jobs:
         # browser: [chrome, firefox, electron, edge, webkit]
         # browser: [chrome, firefox, electron, edge]
         browser: [chrome, firefox]
-        viewport: [desktop]
+        viewport: [desktop, mobile]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,6 +41,9 @@ jobs:
       - name: Merge results to json
         if: always()
         run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/awesomereports/${{ matrix.browser }}_${{ matrix.viewport }}.json
+      - name: Generate html -page
+        if: always()
+        run: npx marge cypress/reports/awesomereports/${{ matrix.browser }}_${{ matrix.viewport }}.json -f ${{ matrix.browser }}_${{ matrix.viewport }} -o cypress/reports/awesomereports
 
       - name: Browse folder
         run: ls cypress/reports/awesomereports
@@ -49,14 +52,14 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: JSONS   
+          name: RESULTS   
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports    
           retention-days: 1
 
       
       - uses: actions/download-artifact@master
         with:
-          name: JSONS
+          name: RESULTS
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports 
       
       - name: Browse folder

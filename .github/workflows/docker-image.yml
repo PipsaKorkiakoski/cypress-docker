@@ -73,7 +73,7 @@ jobs:
         run: npx mochawesome-merge cypress/reports/awesomereports/*.json > cypress/reports/awesomereports/summary/summary.json
       - name: Generate one html -page
         if: always()
-        run: npx marge cypress/reports/awesomereports/summary/summary.json -f summary -o cypress/reports/awesomereports/summary
+        run: npx marge cypress/reports/awesomereports/summary/summary.json -f index -o cypress/reports/awesomereports/summary
 
       - name: 'Upload Artifact'
         if: always()
@@ -98,7 +98,7 @@ jobs:
       - run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary
       - name: Create folder public
         run: mkdir public
-      - run: cp -r /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary public/
+      - run: cp -r /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary/* public/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

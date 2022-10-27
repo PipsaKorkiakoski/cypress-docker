@@ -37,7 +37,7 @@ jobs:
 
       - name: Create new awesome folder
         run: |
-          if ! -d test -f "$FILE"; then
+          if ! -d "$FILE"; then
               mkdir cypress/reports/awesomereports
           fi
         env: 
@@ -87,8 +87,14 @@ jobs:
       - name: Browse folder
         run: ls cypress/reports/awesomereports
       
-      - name: Create folder summary
-        run: mkdir cypress/reports/awesomereports/summary
+      - name: Create new summary folder
+        run: |
+          if ! -d "$FILE"; then
+              mkdir cypress/reports/awesomereports/summary
+          fi
+        env: 
+          FILE: "cypress/reports/awesomereports/summary"
+
 
       - name: Merge all results to one json
         if: always()

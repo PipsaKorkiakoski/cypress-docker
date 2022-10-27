@@ -91,6 +91,7 @@ jobs:
           retention-days: 1
       
   deploy_gh_page:
+    if: always()
     needs: install
     runs-on: ubuntu-latest
     steps:

@@ -51,13 +51,23 @@ jobs:
       - name: Browse folder
         run: ls cypress/reports/awesomereports
 
-      - name: 'Upload Artifact'
-        if: always()
-        uses: actions/upload-artifact@v3
+      - name: Cache Awesomereports
+        id: cache-awesomereports
+        uses: actions/cache@v2
         with:
-          name: JSONS   
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
-          retention-days: 1
+          path: cypress/reports/awesomereports
+          key: ${{ runner.os }}-awesomereports
+
+      - name: Generate Prime Numbers
+        if: steps.cache-awesomereports.outputs.cache-hit != 'true'
+        run: ls cypress/reports/awesomereports
+      # - name: 'Upload Artifact'
+      #   if: always()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: JSONS   
+      #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
+      #     retention-days: 1
 
       
       # - uses: actions/download-artifact@master

@@ -38,12 +38,6 @@ jobs:
       - name: Create new awesome folder
         run: mkdir cypress/reports/awesomereports
 
-      - name: Browse folder
-        run: ls cypress/reports/awesomereports
-      
-      - name: Browse folder
-        run: ls cypress/reports/mocha
-
       - name: Merge results to json
         if: always()
         run: npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/awesomereports/${{ matrix.browser }}_${{ matrix.viewport }}.json
@@ -56,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: JSONS   
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports    
           retention-days: 1
 
       

@@ -22,8 +22,8 @@ jobs:
         # view: [mobile, desktop]    
         # browser: [chrome, firefox, electron, edge, webkit]
         # browser: [chrome, firefox, electron, edge]
-        browser: [chrome, firefox]
-        viewport: [desktop, mobile]
+        browser: [chrome]
+        viewport: [desktop]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -84,15 +84,20 @@ jobs:
           path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary     
           retention-days: 1
       
-      - name: 'Upload HTML'
-        if: always()
-        uses: actions/upload-artifact@v3
+  deploy_gh_page:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
         with:
-          name: summary_html
-          # path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/mochareports/${{ matrix.browser }}/      
-          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary/summary.html     
-          retention-days: 1
-          
+          name: SUMMARY
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary
+      - run: ls 
+      - name: Create folder public
+        run: mkdir /public
+
+      
+
       # - name: 'Upload Videos'
       #   if: always()
       #   uses: actions/upload-artifact@v3

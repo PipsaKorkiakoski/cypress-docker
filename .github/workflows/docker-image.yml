@@ -97,13 +97,13 @@ jobs:
       - run: ls 
       - run: ls /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary
       - name: Create folder public
-        run: mkdir public
-      - run: cp /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary public/
+        run: mkdir docs
+      - run: cp -r /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports/summary docs/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./docs
 
       # - name: 'Upload Videos'
       #   if: always()

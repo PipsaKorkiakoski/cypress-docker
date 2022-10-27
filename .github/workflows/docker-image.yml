@@ -52,15 +52,19 @@ jobs:
         run: ls cypress/reports/awesomereports
 
       - name: Cache Awesomereports
-        id: cache-awesomereports
+
         uses: actions/cache@v2
         with:
           path: cypress/reports/awesomereports
-          key: ${{ runner.os }}-awesomereports
+          key: awesomereports-${{ github.run_id }}
+          restore-keys: awesomereports-
 
-      - name: Generate Prime Numbers
-        if: steps.cache-awesomereports.outputs.cache-hit != 'true'
-        run: ls cypress/reports/awesomereports
+      - name: Restore Awesomereports
+
+        uses: actions/cache@v2
+        with:
+          path: cypress/reports/awesomereports
+          key: awesomereports-${{ github.run_id }}
       # - name: 'Upload Artifact'
       #   if: always()
       #   uses: actions/upload-artifact@v3

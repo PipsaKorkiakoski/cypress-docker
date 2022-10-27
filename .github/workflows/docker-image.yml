@@ -36,8 +36,12 @@ jobs:
           command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
 
       - name: Create new awesome folder
-        if: ! -d "cypress/reports/awesomereports"
-        run: mkdir cypress/reports/awesomereports
+        run: |
+          if ! -d test -f "$FILE"; then
+              echo "Hello world"
+          fi
+        env: 
+          FILE: "cypress/reports/awesomereports"
 
       - name: Browse folder
         run: ls cypress/reports/awesomereports

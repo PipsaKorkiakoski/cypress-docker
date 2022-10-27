@@ -36,12 +36,7 @@ jobs:
           command: npm run ${{ matrix.browser }}:${{ matrix.viewport }}:test
 
       - name: Create new awesome folder
-        run: |
-          if ! -d test -f "$FILE"; then
-              mkdir cypress/reports/awesomereports
-          fi
-        env: 
-          FILE: "cypress/reports/awesomereports"
+        run: mkdir cypress/reports/awesomereports
 
       - name: Browse folder
         run: ls cypress/reports/awesomereports
@@ -56,45 +51,25 @@ jobs:
       - name: Browse folder
         run: ls cypress/reports/awesomereports
 
-      - name: Cache Awesomereports
-
-        uses: actions/cache@v2
+      - name: 'Upload Artifact'
+        if: always()
+        uses: actions/upload-artifact@v3
         with:
-          path: cypress/reports/awesomereports
-          key: awesomereports-${{ github.run_id }}
-          restore-keys: awesomereports-
-
-      - name: Restore Awesomereports
-
-        uses: actions/cache@v2
-        with:
-          path: cypress/reports/awesomereports
-          key: awesomereports-${{ github.run_id }}
-      # - name: 'Upload Artifact'
-      #   if: always()
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: JSONS   
-      #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
-      #     retention-days: 1
+          name: JSONS   
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports     
+          retention-days: 1
 
       
-      # - uses: actions/download-artifact@master
-      #   with:
-      #     name: JSONS
-      #     path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports 
+      - uses: actions/download-artifact@master
+        with:
+          name: JSONS
+          path: /home/runner/work/cypress-docker/cypress-docker/cypress/reports/awesomereports 
       
       - name: Browse folder
         run: ls cypress/reports/awesomereports
       
-      - name: Create new summary folder
-        run: |
-          if ! -d test -f "$FILE"; then
-              mkdir cypress/reports/awesomereports/summary
-          fi
-        env: 
-          FILE: "cypress/reports/awesomereports/summary"
-
+      - name: Create folder summary
+        run: mkdir cypress/reports/awesomereports/summary
 
       - name: Merge all results to one json
         if: always()

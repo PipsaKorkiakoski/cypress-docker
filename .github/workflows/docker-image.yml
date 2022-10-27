@@ -37,7 +37,7 @@ jobs:
 
       - name: Create new awesome folder
         run: |
-          if ! -d "$FILE"; then
+          if ! -d test -f "$FILE"; then
               mkdir cypress/reports/awesomereports
           fi
         env: 
@@ -89,7 +89,7 @@ jobs:
       
       - name: Create new summary folder
         run: |
-          if ! -d "$FILE"; then
+          if ! -d test -f "$FILE"; then
               mkdir cypress/reports/awesomereports/summary
           fi
         env: 

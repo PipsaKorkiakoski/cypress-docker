@@ -22,8 +22,8 @@ jobs:
         # view: [mobile, desktop]    
         # browser: [chrome, firefox, electron, edge, webkit]
         # browser: [chrome, firefox, electron, edge]
-        browser: [chrome]
-        viewport: [desktop]
+        browser: [chrome, firefox]
+        viewport: [desktop, mobile]
     steps:
       - name: Checkout
         uses: actions/checkout@v3

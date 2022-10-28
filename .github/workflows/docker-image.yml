@@ -21,10 +21,9 @@ jobs:
       matrix:
         # browser: [chrome, firefox]
         # view: [mobile, desktop]    
-        # browser: [chrome, firefox, electron, edge, webkit]
+        browser: [chrome, firefox, electron, edge, webkit]
         # browser: [chrome, firefox, electron, edge]
-        browser: [chrome, firefox]
-        viewport: [desktop, mobile]
+        viewport: [desktop, tablet, mobile]
     steps:
       - name: Checkout
         uses: actions/checkout@v3

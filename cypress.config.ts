@@ -1,6 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
+  experimentalWebKitSupport: true,
   viewportWidth: 1000,
   viewportHeight: 1280,
   env: {
@@ -12,7 +13,7 @@ export default defineConfig({
   reporterOptions: {
     charts: true,
     overwrite: false,
-    html: false,
+    html: true,
     json: true,
     reportDir: "cypress/reports/mocha",
   },

@@ -1,48 +1,69 @@
 version: "3"
 services:
 
+
   e2e-electron-desktop:
-    image: "my_cypress_mocha_report"
-    # command: "test"
+    ipc: host
+    image: cypress_2
     command: "electron:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/electron:/cypress-docker/cypress/reports
-
-  e2e-firefox-desktop:
-    image: "my_cypress_mocha_report"
-    # command: "test"
-    command: "firefox:desktop:test"
-    volumes:
-      - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/firefox:/cypress-docker/cypress/reports
+      - ./cypress/reports:/cypress-docker/cypress/reports
 
   e2e-chrome-desktop:
-    image: "my_cypress_mocha_report"
+    ipc: host
+    image: cypress_2
     command: "chrome:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/chrome:/cypress-docker/cypress/reports
+      - ./cypress/reports:/cypress-docker/cypress/reports
   
-  e2e-electron-mobile:
-    image: "my_cypress_mocha_report"
-    # command: "test"
-    command: "electron:desktop:test"
+  e2e-edge-desktop:
+    ipc: host
+    image: cypress_2
+    command: "edge:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/electron:/cypress-docker/cypress/reports
-
-  e2e-firefox-mobile:
-    image: "my_cypress_mocha_report"
+      - ./cypress/reports:/cypress-docker/cypress/reports  
+  
+  # e2e-webkit-desktop:
+  #   ipc: host
+  #   image: cypress_2
+  #   depends_on:
+  #     - "e2e-chrome-desktop"
+  #   command: "webkit:desktop:test"
+  #   volumes:
+  #     - ./cypress/videos:/cypress-docker/cypress/videos
+  #     - ./cypress/reports:/cypress-docker/cypress/reports
+  
+  e2e-firefox-desktop:
+    ipc: host
+    image: cypress_2
+    depends_on:
+      - "e2e-webkit-desktop"
     # command: "test"
     command: "firefox:desktop:test"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/firefox:/cypress-docker/cypress/reports
-
-  e2e-chrome-mobile:
-    image: "my_cypress_mocha_report"
-    command: "chrome:desktop:test"
+      - ./cypress/reports:/cypress-docker/cypress/reports  
+  
+  merge_results:
+    ipc: host
+    image: cypress_2
+    depends_on:
+      e2e-electron-desktop:
+        condition: service_completed_successfully      
+      e2e-chrome-desktop:
+        condition: service_completed_successfully      
+      e2e-edge-desktop:
+        condition: service_completed_successfully
+      # e2e-webkit-desktop:
+      #   condition: service_completed_successfully
+      e2e-firefox-desktop:
+        condition: service_completed_successfully
+    
+    # command: "test"
+    command: "compose_generate_result_summary"
     volumes:
       - ./cypress/videos:/cypress-docker/cypress/videos
-      - ./cypress/reports/chrome:/cypress-docker/cypress/reports
+      - ./cypress/reports:/cypress-docker/cypress/reports

@@ -5,9 +5,9 @@
     "passes": 12,
     "pending": 0,
     "failures": 1,
-    "start": "2022-10-28T11:37:30.035Z",
-    "end": "2022-10-28T11:43:29.816Z",
-    "duration": 14777,
+    "start": "2022-10-28T11:51:21.605Z",
+    "end": "2022-10-28T11:52:30.938Z",
+    "duration": 15227,
     "testsRegistered": 13,
     "passPercent": 92.3076923076923,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "29591687-429e-4cb5-b520-3220c15bff0f",
+      "uuid": "89eebd02-800c-4b71-b7c4-c87e7f0cb4d0",
       "title": "",
       "fullFile": "cypress/e2e/api.cy.ts",
       "file": "cypress/e2e/api.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5b04a0ee-6336-433e-a418-95e05ff6ed8a",
+          "uuid": "a5388341-1c56-4434-8628-c4ecf04b2dc6",
           "title": "Actions",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": ".type() - type into a DOM element",
               "fullTitle": "Actions .type() - type into a DOM element",
               "timedOut": null,
-              "duration": 4665,
+              "duration": 4713,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -51,8 +51,8 @@
                 "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.action-something`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/api.cy.ts:12:7)",
                 "diff": null
               },
-              "uuid": "ef6debba-7c62-45d1-91e5-014e8a431ad7",
-              "parentUUID": "5b04a0ee-6336-433e-a418-95e05ff6ed8a",
+              "uuid": "ff35179c-f5f7-4ca9-a9d5-23efdb43df3f",
+              "parentUUID": "a5388341-1c56-4434-8628-c4ecf04b2dc6",
               "isHook": false,
               "skipped": false
             },
@@ -60,7 +60,7 @@
               "title": ".focus() - focus on a DOM element",
               "fullTitle": "Actions .focus() - focus on a DOM element",
               "timedOut": null,
-              "duration": 301,
+              "duration": 198,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -69,22 +69,22 @@
               "context": null,
               "code": "// https://on.cypress.io/focus\ncy.get('.action-focus').focus()\n    .should('have.class', 'focus')\n    .prev().should('have.attr', 'style', 'color: orange;');",
               "err": {},
-              "uuid": "d1b90c29-53d8-435a-b801-e9f77957dc31",
-              "parentUUID": "5b04a0ee-6336-433e-a418-95e05ff6ed8a",
+              "uuid": "ea1abfee-c05e-4e24-a0c7-cad457d41554",
+              "parentUUID": "a5388341-1c56-4434-8628-c4ecf04b2dc6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d1b90c29-53d8-435a-b801-e9f77957dc31"
+            "ea1abfee-c05e-4e24-a0c7-cad457d41554"
           ],
           "failures": [
-            "ef6debba-7c62-45d1-91e5-014e8a431ad7"
+            "ff35179c-f5f7-4ca9-a9d5-23efdb43df3f"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 4966,
+          "duration": 4911,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -100,7 +100,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "cdfe1d62-954d-464e-b67f-ad62004bf514",
+      "uuid": "e62efd75-0803-44a3-a2bf-7d2981c0104f",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -109,7 +109,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f9c8d225-9536-4371-bdf7-3d7ab3764c0a",
+          "uuid": "124ab32f-e261-4e6c-910f-baa9d5734b0a",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -120,7 +120,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 1061,
+              "duration": 747,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -129,20 +129,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "63cb4bb7-3169-44e0-92f7-cd4153a454d7",
-              "parentUUID": "f9c8d225-9536-4371-bdf7-3d7ab3764c0a",
+              "uuid": "bb7ce4bd-1a2c-4c91-8e53-666e7ff0fbf5",
+              "parentUUID": "124ab32f-e261-4e6c-910f-baa9d5734b0a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "63cb4bb7-3169-44e0-92f7-cd4153a454d7"
+            "bb7ce4bd-1a2c-4c91-8e53-666e7ff0fbf5"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1061,
+          "duration": 747,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -158,7 +158,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "b078b03a-2637-46d0-b5fd-fc91ded60301",
+      "uuid": "98fee1ce-0de4-4d3b-868e-ccefb8912276",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -167,7 +167,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "30b90527-b055-49a7-a7f3-0770e95e1663",
+          "uuid": "5651e56b-9dc3-4c98-8f09-28ddfaf37c21",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -178,7 +178,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 570,
+              "duration": 685,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -187,20 +187,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "6728890e-7ec4-45a3-8618-5d210d978c46",
-              "parentUUID": "30b90527-b055-49a7-a7f3-0770e95e1663",
+              "uuid": "4753f5ef-fa7b-47a8-8056-e00de6a17ef8",
+              "parentUUID": "5651e56b-9dc3-4c98-8f09-28ddfaf37c21",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "6728890e-7ec4-45a3-8618-5d210d978c46"
+            "4753f5ef-fa7b-47a8-8056-e00de6a17ef8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 570,
+          "duration": 685,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -216,7 +216,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "9934051e-7957-4b99-95a1-489dafa23bbc",
+      "uuid": "ba186d48-c51c-4d88-b867-47acdbbc2a64",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -225,7 +225,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "abd3ba81-d42b-45eb-b911-8806e756b993",
+          "uuid": "5c15191c-1533-4722-8c4d-5b4967e21257",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -236,7 +236,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 982,
+              "duration": 763,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -245,20 +245,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "33acacdf-4603-4ff4-ab2c-5776336c12de",
-              "parentUUID": "abd3ba81-d42b-45eb-b911-8806e756b993",
+              "uuid": "72fac2ab-b999-4760-96e0-c1dfb9cac2e7",
+              "parentUUID": "5c15191c-1533-4722-8c4d-5b4967e21257",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "33acacdf-4603-4ff4-ab2c-5776336c12de"
+            "72fac2ab-b999-4760-96e0-c1dfb9cac2e7"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 982,
+          "duration": 763,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -274,7 +274,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "51d956d9-4017-4235-931f-472bc42199dc",
+      "uuid": "a4ae70a1-c6ac-4522-9dea-2e5155ce0222",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -283,7 +283,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "a3ac5478-41fa-4679-8816-2b58437bc34b",
+          "uuid": "357a9b3a-93f6-4c9a-9fad-418ce844b9e8",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -294,7 +294,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 564,
+              "duration": 656,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -303,20 +303,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "965430e1-bd25-4378-88d2-6c46d0359606",
-              "parentUUID": "a3ac5478-41fa-4679-8816-2b58437bc34b",
+              "uuid": "918c8c95-155d-43a5-91d5-d1795f9f9968",
+              "parentUUID": "357a9b3a-93f6-4c9a-9fad-418ce844b9e8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "965430e1-bd25-4378-88d2-6c46d0359606"
+            "918c8c95-155d-43a5-91d5-d1795f9f9968"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 564,
+          "duration": 656,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -332,7 +332,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "9c8877ee-3d5c-49f3-97b4-d729151f49ce",
+      "uuid": "ae31e2fd-4202-42a3-9bbd-7475c5b0f2a5",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -341,7 +341,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "66ec983f-573d-4b63-9930-a497abf5b0da",
+          "uuid": "d8127306-1f97-47fe-a49e-39712d46f99d",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -352,7 +352,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 938,
+              "duration": 988,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -361,20 +361,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "fa41f505-e494-40c0-98c8-7be0541cc47a",
-              "parentUUID": "66ec983f-573d-4b63-9930-a497abf5b0da",
+              "uuid": "36429bf3-a716-410e-a9fc-71f7f7d5ee83",
+              "parentUUID": "d8127306-1f97-47fe-a49e-39712d46f99d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "fa41f505-e494-40c0-98c8-7be0541cc47a"
+            "36429bf3-a716-410e-a9fc-71f7f7d5ee83"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 938,
+          "duration": 988,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -390,7 +390,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "537c84a4-5212-4f93-b29f-f98c803aab53",
+      "uuid": "30b412fc-a6a5-41c9-bc99-6b524c58234a",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -399,7 +399,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2d7cc901-9a43-4f70-84c0-6faab22541cb",
+          "uuid": "efcbecb0-8c44-4d1f-8d42-ba05d7986462",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -410,7 +410,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 1113,
+              "duration": 1297,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -419,20 +419,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "c2b263bd-71cb-419a-92d0-035b333643a9",
-              "parentUUID": "2d7cc901-9a43-4f70-84c0-6faab22541cb",
+              "uuid": "c58aa63d-17eb-4c6d-bc7c-d6d402a0c96a",
+              "parentUUID": "efcbecb0-8c44-4d1f-8d42-ba05d7986462",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "c2b263bd-71cb-419a-92d0-035b333643a9"
+            "c58aa63d-17eb-4c6d-bc7c-d6d402a0c96a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1113,
+          "duration": 1297,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -448,7 +448,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "bcc5480b-1b8c-46aa-bc86-f8638fc4a76c",
+      "uuid": "719a5b1a-adee-4c19-ae39-86b8c0851fb4",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -457,7 +457,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "8d4c317d-7063-43af-b9b4-e525222cd83d",
+          "uuid": "1a38b241-87f3-463b-bf7e-9b7be80cdf82",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -468,7 +468,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 1243,
+              "duration": 1705,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -477,20 +477,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "de866d5a-f089-45ec-85e2-8e6c75d5fa93",
-              "parentUUID": "8d4c317d-7063-43af-b9b4-e525222cd83d",
+              "uuid": "fda64076-617d-4890-9958-e0a99a6f584c",
+              "parentUUID": "1a38b241-87f3-463b-bf7e-9b7be80cdf82",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "de866d5a-f089-45ec-85e2-8e6c75d5fa93"
+            "fda64076-617d-4890-9958-e0a99a6f584c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1243,
+          "duration": 1705,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -506,7 +506,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "1378c047-9beb-491a-9faf-4eb6c606e1ba",
+      "uuid": "d77e4ef6-c19e-4870-94c5-4fb6f5fc6fbd",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -515,7 +515,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "141d19d6-373d-49c6-8180-85dac50a4207",
+          "uuid": "84750565-92dc-42a0-868c-0c6a6e1d56b0",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -526,7 +526,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 1063,
+              "duration": 1240,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -535,20 +535,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "136623fc-5bcf-421c-b7a3-fc98a609e1bf",
-              "parentUUID": "141d19d6-373d-49c6-8180-85dac50a4207",
+              "uuid": "3fb814a5-c427-4e37-8997-ae81a0e7b163",
+              "parentUUID": "84750565-92dc-42a0-868c-0c6a6e1d56b0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "136623fc-5bcf-421c-b7a3-fc98a609e1bf"
+            "3fb814a5-c427-4e37-8997-ae81a0e7b163"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1063,
+          "duration": 1240,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -564,7 +564,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "c9f36633-51aa-491e-b7f4-ce51ac701a5f",
+      "uuid": "ad44ef5a-513d-473d-beea-b14333d4fc77",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -573,7 +573,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "26f1d30a-d674-45d1-bddd-6bb7944cc198",
+          "uuid": "4e04b20a-f5a2-47f5-97a7-02531e2f1d45",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -584,7 +584,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 823,
+              "duration": 665,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -593,20 +593,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "ec8a1eeb-cce5-47c3-ada8-84d861c57fef",
-              "parentUUID": "26f1d30a-d674-45d1-bddd-6bb7944cc198",
+              "uuid": "d47dff02-509c-4fe8-9cae-1994c3116237",
+              "parentUUID": "4e04b20a-f5a2-47f5-97a7-02531e2f1d45",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "ec8a1eeb-cce5-47c3-ada8-84d861c57fef"
+            "d47dff02-509c-4fe8-9cae-1994c3116237"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 823,
+          "duration": 665,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -622,7 +622,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "c0636fad-4dd0-42ef-a0b6-6dcb80d85082",
+      "uuid": "5be9a06c-e74d-46fa-b357-732d6d87deb0",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -631,7 +631,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "13ab3f68-71e5-43ba-9ad5-37dc94e5b9a0",
+          "uuid": "6eadead1-a7c4-4232-bb46-0a1573f21140",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -642,7 +642,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 730,
+              "duration": 873,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -651,20 +651,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "778eb20c-291a-49c8-b6b6-fb2af502ec5c",
-              "parentUUID": "13ab3f68-71e5-43ba-9ad5-37dc94e5b9a0",
+              "uuid": "61be14da-bacf-4873-8677-c04e2635fd3b",
+              "parentUUID": "6eadead1-a7c4-4232-bb46-0a1573f21140",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "778eb20c-291a-49c8-b6b6-fb2af502ec5c"
+            "61be14da-bacf-4873-8677-c04e2635fd3b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 730,
+          "duration": 873,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -680,7 +680,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "a1747610-443c-4ab9-bfa4-ab691fa81be8",
+      "uuid": "5590e69e-d67a-49ee-860f-76b45848e097",
       "title": "",
       "fullFile": "cypress/e2e/ui.cy.ts",
       "file": "cypress/e2e/ui.cy.ts",
@@ -689,7 +689,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "899bf564-4f6f-4ca1-8c40-8fc7dcb39084",
+          "uuid": "697b9354-c70f-4c54-a863-937253facbdb",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -700,7 +700,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 724,
+              "duration": 697,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -709,20 +709,20 @@
               "context": null,
               "code": "// We use the `cy.get()` command to get all elements that match the selector.\n// Then, we use `should` to assert that there are two matched items,\n// which are the two default items.\ncy.get('.todo-list li').should('have.length', 2);\n// We can go even further and check that the default todos each contain\n// the correct text. We use the `first` and `last` functions\n// to get just the first and last matched elements individually,\n// and then perform an assertion with `should`.\ncy.get('.todo-list li').first().should('have.text', 'Pay electric bill');\ncy.get('.todo-list li').last().should('have.text', 'Walk the dog');",
               "err": {},
-              "uuid": "69b02800-cafa-4def-a189-a1768cdeb3c5",
-              "parentUUID": "899bf564-4f6f-4ca1-8c40-8fc7dcb39084",
+              "uuid": "fc54a869-b550-4961-87be-1322927e6025",
+              "parentUUID": "697b9354-c70f-4c54-a863-937253facbdb",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "69b02800-cafa-4def-a189-a1768cdeb3c5"
+            "fc54a869-b550-4961-87be-1322927e6025"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 724,
+          "duration": 697,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

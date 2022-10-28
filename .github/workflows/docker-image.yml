@@ -23,6 +23,8 @@ jobs:
       - run: npm install -g npm@latest
       - run: npm --version
       - run: node --version
+      - run: npm ci
+      - run: npx playwright install-deps
       - name: Cypress run
         uses: cypress-io/github-action@v4.2.0
         with:
